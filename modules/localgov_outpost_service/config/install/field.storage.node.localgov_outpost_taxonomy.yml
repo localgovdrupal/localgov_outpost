@@ -1,0 +1,20 @@
+uuid: 5d81e26e-2bdb-4c36-b2fc-8c5cb40ba5f6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.localgov_outpost_taxonomy
+field_name: localgov_outpost_taxonomy
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

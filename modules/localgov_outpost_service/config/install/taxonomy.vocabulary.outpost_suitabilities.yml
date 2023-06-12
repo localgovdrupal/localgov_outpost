@@ -1,0 +1,8 @@
+uuid: ed340f18-fcf8-49bd-946d-e54fa3eabd42
+langcode: en
+status: true
+dependencies: {  }
+name: 'Outpost suitabilities'
+vid: outpost_suitabilities
+description: ''
+weight: 0

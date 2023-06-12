@@ -1,0 +1,24 @@
+uuid: d8960e1b-7ebd-457f-a823-f99a06a8c6a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_directory_job_title
+    - node.type.localgov_outpost_service
+  enforced:
+    module:
+      - localgov_directories
+_core:
+  default_config_hash: lAuojtlWN_VLHS-ELKQW9t6ITiOxD-KTsnMNMhQRnu0
+id: node.localgov_outpost_service.localgov_directory_job_title
+field_name: localgov_directory_job_title
+entity_type: node
+bundle: localgov_outpost_service
+label: 'Contact job title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,5 @@
+name: Outpost
+type: module
+description: Integration with Outpost.
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10

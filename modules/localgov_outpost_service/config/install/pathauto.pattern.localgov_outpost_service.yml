@@ -1,0 +1,24 @@
+uuid: fde09356-b1d6-437c-b623-525672807394
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+_core:
+  default_config_hash: JnCRxMIcD2_qIId3e_Kb7Usni3emoksnXTO_sB__lCQ
+id: localgov_outpost_service
+label: 'Directory Entry Page'
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  cf0a2bbc-3869-4912-a0e7-0f25ba4fcd1e:
+    id: 'entity_bundle:node'
+    bundles:
+      localgov_outpost_service: localgov_outpost_service
+    negate: false
+    context_mapping:
+      node: node
+    uuid: cf0a2bbc-3869-4912-a0e7-0f25ba4fcd1e
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,13 @@
+uuid: 5cf00d69-5cca-4163-a68e-a906e9224e97
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 8q3HblRtQej3yPQCdt9-wipHhnev2KEUN6rzv39sjY0
+name: 'Outpost service'
+type: localgov_outpost_service
+description: 'Including directory fields.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

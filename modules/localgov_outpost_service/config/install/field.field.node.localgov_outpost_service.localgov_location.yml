@@ -1,0 +1,29 @@
+uuid: 17914168-2a5e-44b9-a8a8-95bfb54ac9ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_location
+    - localgov_geo.localgov_geo_type.address
+    - node.type.localgov_outpost_service
+id: node.localgov_outpost_service.localgov_location
+field_name: localgov_location
+entity_type: node
+bundle: localgov_outpost_service
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:localgov_geo'
+  handler_settings:
+    target_bundles:
+      address: address
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

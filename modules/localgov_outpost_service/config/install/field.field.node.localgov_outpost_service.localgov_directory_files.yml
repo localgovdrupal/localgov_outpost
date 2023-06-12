@@ -1,0 +1,33 @@
+uuid: 35dbb6f0-90d7-492d-a9bd-7168a3b1cf7b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_directory_files
+    - media.type.document
+    - node.type.localgov_outpost_service
+  enforced:
+    module:
+      - localgov_directories
+_core:
+  default_config_hash: ByYaWvXgAN4F_brVwXiSXcu20vlJR4-_B7Ep42BiMZE
+id: node.localgov_outpost_service.localgov_directory_files
+field_name: localgov_directory_files
+entity_type: node
+bundle: localgov_outpost_service
+label: 'File attachments'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

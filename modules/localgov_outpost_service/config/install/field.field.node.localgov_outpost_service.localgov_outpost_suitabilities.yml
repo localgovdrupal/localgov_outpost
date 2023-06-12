@@ -1,0 +1,29 @@
+uuid: 428c4d28-cc04-4764-a43f-71aae40aedba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_suitabilities
+    - node.type.localgov_outpost_service
+    - taxonomy.vocabulary.outpost_suitabilities
+id: node.localgov_outpost_service.localgov_outpost_suitabilities
+field_name: localgov_outpost_suitabilities
+entity_type: node
+bundle: localgov_outpost_service
+label: Suitabilities
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      outpost_suitabilities: outpost_suitabilities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

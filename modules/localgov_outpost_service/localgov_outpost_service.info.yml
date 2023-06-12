@@ -1,0 +1,7 @@
+name: 'Outpost: Services'
+type: module
+description: 'A content type for Outpost services.'
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgov_outpost:localgov_outpost

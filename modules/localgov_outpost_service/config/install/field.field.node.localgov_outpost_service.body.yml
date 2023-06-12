@@ -1,0 +1,25 @@
+uuid: 13136e33-a76e-44ce-8370-f160096153b9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.localgov_outpost_service
+  module:
+    - text
+_core:
+  default_config_hash: 9jlGud02XAw8PRE2QJFetBG_PxrnjOJGSRskDjMnGV0
+id: node.localgov_outpost_service.body
+field_name: body
+entity_type: node
+bundle: localgov_outpost_service
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

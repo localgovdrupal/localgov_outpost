@@ -1,0 +1,8 @@
+name: 'Outpost: Connector'
+type: module
+description: 'Transfer data from Outpost to LocalGov Drupal.'
+package: LocalGov Drupal
+core_version_requirement: ^9 || ^10
+dependencies:
+  - localgov_outpost:localgov_outpost_service
+  - migrate_plus:migrate_plus

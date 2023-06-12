@@ -1,0 +1,24 @@
+uuid: 868ce940-eb38-457c-a639-2f0b8c5827f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_directory_name
+    - node.type.localgov_outpost_service
+  enforced:
+    module:
+      - localgov_directories
+_core:
+  default_config_hash: im6mhiKfc2Gm0hjR0GjJt6khxvui5neSA2FtBCngOfo
+id: node.localgov_outpost_service.localgov_directory_name
+field_name: localgov_directory_name
+entity_type: node
+bundle: localgov_outpost_service
+label: 'Contact name'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

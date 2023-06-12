@@ -1,0 +1,8 @@
+uuid: e1358822-5ef5-4a48-8868-a91d1386859b
+langcode: en
+status: true
+dependencies: {  }
+name: 'Outpost taxonomy'
+vid: outpost_taxonomy
+description: 'Imported categories from Outpost'
+weight: 0
