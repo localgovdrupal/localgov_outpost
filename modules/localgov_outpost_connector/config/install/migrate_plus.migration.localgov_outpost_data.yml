@@ -38,11 +38,11 @@ source:
       selector: name
     -
       name: description
-      label: 'Description'
+      label: Description
       selector: description
     -
       name: url
-      label: 'URL'
+      label: URL
       selector: url
     -
       name: created
@@ -50,15 +50,15 @@ source:
       selector: created_at
     -
       name: status
-      label: 'Status'
+      label: Status
       selector: status
     -
       name: locations
-      label: 'Locations'
+      label: Locations
       selector: locations
     -
       name: contacts
-      label: 'Contacts'
+      label: Contacts
       selector: contacts
     -
       name: contact_name
@@ -78,11 +78,11 @@ source:
       selector: contacts/0/phone
     -
       name: organisation
-      label: 'Organisation'
+      label: Organisation
       selector: organisation
     -
       name: taxonomies
-      label: 'Taxonomies'
+      label: Taxonomies
       selector: taxonomies
   ids:
     id:
@@ -103,16 +103,16 @@ process:
   created:
     plugin: format_date
     from_format: 'Y-m-d\TH:i:s.vp'
-    to_format: 'U'
-    from_timezone: 'UTC'
-    to_timezone: 'Europe/London'
+    to_format: U
+    from_timezone: UTC
+    to_timezone: Europe/London
     source: created
   changed:
     plugin: format_date
     from_format: 'Y-m-d\TH:i:s.vp'
-    to_format: 'U'
-    from_timezone: 'UTC'
-    to_timezone: 'Europe/London'
+    to_format: U
+    from_timezone: UTC
+    to_timezone: Europe/London
     source: updated
   title: name
   body: description
@@ -122,24 +122,33 @@ process:
   localgov_directory_email: contact_email
   localgov_directory_website: url
   localgov_outpost_taxonomy:
-      plugin: sub_process
-      source: taxonomies
-      process:
-        target_id:
-          plugin: migration_lookup
-          migration: localgov_outpost_category
-          source: id
+    plugin: sub_process
+    source: taxonomies
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: localgov_outpost_category
+        source: id
+  localgov_outpost_suitabilities:
+    plugin: sub_process
+    source: taxonomies
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: localgov_outpost_suitabilities
+        source: id
   localgov_location:
-      plugin: sub_process
-      source: locations
-      process:
-        target_id:
-          plugin: migration_lookup
-          migration: localgov_outpost_locations
-          source: id
+    plugin: sub_process
+    source: locations
+    process:
+      target_id:
+        plugin: migration_lookup
+        migration: localgov_outpost_locations
+        source: id
 destination:
   plugin: 'entity:node'
 migration_dependencies:
   required:
     - localgov_outpost_category
     - localgov_outpost_locations
+    - localgov_outpost_suitabilities

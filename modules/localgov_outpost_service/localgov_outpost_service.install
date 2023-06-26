@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * LocalGov Outpost Services installation and updates.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function localgov_outpost_service_install($is_syncing) {
+  if ($is_syncing) {
+    return;
+  }
+
+  $index = Index::load('localgov_directories_index_default');
+  if (empty($index)) {
+    \Drupal::messenger()->addError(\t('No default LocalGov Directories index. Not configuring Outpost fields for Index.'));
+  }
+  $category_field = $index->get('localgov_outpost_taxonomy');
+  if (empty($category_field)) {
+    $category_field = new Field($index, 'localgov_outpost_taxonomy');
+    $category_field->setDatasourceId('entity:node');
+    $category_field->setPropertyPath('localgov_outpost_taxonomy');
+    $category_field->setLabel('Category');
+    $category_field->setType('integer');
+    $category_field->setDependencies([
+      'config' => ['field.storage.node.localgov_outpost_taxonomy'],
+      'module' => ['localgov_outpost_service'],
+    ]);
+    $index->addField($category_field);
+    $index->save();
+  }
+  $suitabilities_field = $index->get('localgov_outpost_suitabilities');
+  if (empty($suitabilities_field)) {
+    $suitabilities_field = new Field($index, 'localgov_outpost_suitabilities');
+    $suitabilities_field->setDatasourceId('entity:node');
+    $suitabilities_field->setPropertyPath('localgov_outpost_suitabilities');
+    $suitabilities_field->setLabel('Suitabilites');
+    $suitabilities_field->setType('integer');
+    $suitabilities_field->setDependencies([
+      'config' => ['field.storage.node.localgov_outpost_suitabilities'],
+      'module' => ['localgov_outpost_service'],
+    ]);
+    $index->addField($suitabilities_field);
+    $index->save();
+  }
+}
