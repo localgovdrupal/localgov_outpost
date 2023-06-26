@@ -1,0 +1,31 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.outpost_category_1
+  module:
+    - facets
+    - node
+  theme:
+    - localgov_scarfolk
+id: outpost_category_1_scarfolk
+theme: localgov_scarfolk
+region: sidebar_first
+weight: 5
+provider: null
+plugin: 'facet_block:outpost_category_1'
+settings:
+  id: 'facet_block:outpost_category_1'
+  label: 'Outpost category'
+  label_display: '0'
+  provider: facets
+  context_mapping: {  }
+  block_id: outpost_category_1_scarfolk
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      localgov_directory: localgov_directory

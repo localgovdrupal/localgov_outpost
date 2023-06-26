@@ -1,4 +1,3 @@
-uuid: b9aa0f85-06c5-433e-88e7-9199f708e301
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,8 @@ dependencies:
     - views.view.localgov_directory_channel
   module:
     - search_api
-id: outpost_category
-name: Category
+id: outpost_category_2
+name: 'Outpost taxonomy'
 weight: 0
 min_count: 1
 missing: false
@@ -20,7 +19,7 @@ query_operator: or
 hard_limit: 0
 exclude: false
 use_hierarchy: true
-keep_hierarchy_parents_active: true
+keep_hierarchy_parents_active: false
 hierarchy:
   type: taxonomy
   config: {  }
@@ -38,9 +37,7 @@ widget:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
 empty_behavior:
-  behavior: text
-  text_format: plain_text
-  text: 'debug - empty category facet'
+  behavior: none
 only_visible_when_facet_source_is_visible: false
 show_only_one_result: false
 show_title: false

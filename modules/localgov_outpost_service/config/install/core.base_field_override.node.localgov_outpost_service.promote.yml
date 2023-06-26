@@ -1,11 +1,8 @@
-uuid: dad58569-0952-4494-9e20-94a6a28d1f6d
 langcode: en
 status: true
 dependencies:
   config:
     - node.type.localgov_outpost_service
-_core:
-  default_config_hash: VjxdYE15A-whb5hR2mKCwLl-A1IB2NjsFZVZAKnVLZo
 id: node.localgov_outpost_service.promote
 field_name: promote
 entity_type: node

@@ -1,4 +1,3 @@
-uuid: 5c2d91f2-3997-4d54-a7b9-6b09f5675b0f
 langcode: en
 status: true
 dependencies:
@@ -7,20 +6,20 @@ dependencies:
     - views.view.localgov_directory_channel
   module:
     - search_api
-id: outpost_category_map
-name: Category
+id: outpost_category_1
+name: outpost_category_1
 weight: 0
 min_count: 1
 missing: false
 missing_label: others
 url_alias: outpost_category
-facet_source_id: 'search_api:views_embed__localgov_directory_channel__embed_map'
+facet_source_id: 'search_api:views_embed__localgov_directory_channel__node_embed'
 field_identifier: localgov_outpost_taxonomy
 query_operator: or
 hard_limit: 0
 exclude: false
 use_hierarchy: true
-keep_hierarchy_parents_active: true
+keep_hierarchy_parents_active: false
 hierarchy:
   type: taxonomy
   config: {  }
@@ -38,9 +37,7 @@ widget:
       show_less_label: 'Show less'
       show_more_label: 'Show more'
 empty_behavior:
-  behavior: text
-  text_format: plain_text
-  text: 'debug - empty category facet'
+  behavior: none
 only_visible_when_facet_source_is_visible: false
 show_only_one_result: false
 show_title: false

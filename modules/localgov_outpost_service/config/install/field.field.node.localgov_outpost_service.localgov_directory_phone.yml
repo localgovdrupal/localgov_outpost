@@ -1,4 +1,3 @@
-uuid: a57b7a60-22bb-4729-830d-b859427c7aa7
 langcode: en
 status: true
 dependencies:
@@ -10,8 +9,6 @@ dependencies:
   enforced:
     module:
       - localgov_directories
-_core:
-  default_config_hash: lSQ0ceHyPy2-xd0B4xgkhwVJ9tdv9GRg-EaOLGGcfiU
 id: node.localgov_outpost_service.localgov_directory_phone
 field_name: localgov_directory_phone
 entity_type: node

@@ -1,4 +1,3 @@
-uuid: 707af585-b64f-4a4f-82a5-a0fcb96e9e29
 langcode: en
 status: true
 dependencies:
@@ -22,8 +21,6 @@ dependencies:
   module:
     - text
     - user
-_core:
-  default_config_hash: u_gHIeObPYJ1IshjcAGqQ-RQ5DJhTnRGdpNhR-I575E
 id: node.localgov_outpost_service.teaser
 targetEntityType: node
 bundle: localgov_outpost_service

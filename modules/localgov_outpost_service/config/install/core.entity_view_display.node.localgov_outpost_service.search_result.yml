@@ -1,4 +1,3 @@
-uuid: ba7a9af0-4b26-4907-9db8-822ba6b9c1bb
 langcode: en
 status: true
 dependencies:
@@ -44,8 +43,6 @@ third_party_settings:
         classes: ''
         id: ''
         description: ''
-_core:
-  default_config_hash: 14npH04I1vLDP1d-PJBLN3tpi1VfmzukH6JDUAQso9c
 id: node.localgov_outpost_service.search_result
 targetEntityType: node
 bundle: localgov_outpost_service

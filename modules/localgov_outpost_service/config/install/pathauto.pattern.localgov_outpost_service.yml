@@ -1,11 +1,8 @@
-uuid: fde09356-b1d6-437c-b623-525672807394
 langcode: en
 status: true
 dependencies:
   module:
     - node
-_core:
-  default_config_hash: JnCRxMIcD2_qIId3e_Kb7Usni3emoksnXTO_sB__lCQ
 id: localgov_outpost_service
 label: 'Directory Entry Page'
 type: 'canonical_entities:node'
