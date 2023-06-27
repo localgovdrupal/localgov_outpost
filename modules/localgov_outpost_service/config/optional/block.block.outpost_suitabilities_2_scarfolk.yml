@@ -2,29 +2,30 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.outpost_suitabilities_2
+    - facets.facet.outpost_suitabilites_2
   module:
     - facets
     - node
   theme:
     - localgov_scarfolk
-id: outpost_suitabilities_2_scarfolk
+id: outpost_suitabilites_2_scarfolk
 theme: localgov_scarfolk
 region: sidebar_first
-weight: 5
+weight: -5
 provider: null
-plugin: 'facet_block:outpost_suitabilities_2'
+plugin: 'facet_block:outpost_suitabilites_2'
 settings:
-  id: 'facet_block:outpost_suitabilities_2'
-  label: 'Outpost suitabilities'
-  provider: facets
+  id: 'facet_block:outpost_suitabilites_2'
+  label: Suitabilites
   label_display: '0'
-  block_id: outpost_suitabilities
+  provider: facets
+  context_mapping: {  }
+  block_id: outpost_suitabilites_2_scarfolk
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      localgov_directory: localgov_directory
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      localgov_directory: localgov_directory

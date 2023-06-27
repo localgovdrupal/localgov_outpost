@@ -2,29 +2,30 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.outpost_category_2
+    - facets.facet.outpost_category_1
   module:
     - facets
     - node
   theme:
     - localgov_base
-id: outpost_category_2
+id: outpost_category_1
 theme: localgov_base
 region: sidebar_first
 weight: 5
 provider: null
-plugin: 'facet_block:outpost_category_2'
+plugin: 'facet_block:outpost_category_1'
 settings:
-  id: 'facet_block:outpost_category_2'
+  id: 'facet_block:outpost_category_1'
   label: 'Outpost category'
-  provider: facets
   label_display: '0'
-  block_id: outpost_category_2
+  provider: facets
+  context_mapping: {  }
+  block_id: outpost_category_1
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      localgov_directory: localgov_directory
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      localgov_directory: localgov_directory

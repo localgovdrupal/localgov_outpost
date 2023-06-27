@@ -17,14 +17,15 @@ plugin: 'facet_block:outpost_category_1'
 settings:
   id: 'facet_block:outpost_category_1'
   label: 'Outpost category'
-  provider: facets
   label_display: '0'
-  block_id: outpost_category
+  provider: facets
+  context_mapping: {  }
+  block_id: outpost_category_1_scarfolk
 visibility:
-  node_type:
-    id: node_type
-    bundles:
-      localgov_directory: localgov_directory
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
     context_mapping:
       node: '@node.node_route_context:node'
+    bundles:
+      localgov_directory: localgov_directory
