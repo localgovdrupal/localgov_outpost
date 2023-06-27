@@ -1,0 +1,30 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - facets.facet.outpost_suitabilities_2
+  module:
+    - facets
+    - node
+  theme:
+    - localgov_base
+id: outpost_suitabilities_2
+theme: localgov_base
+region: sidebar_first
+weight: 5
+provider: null
+plugin: 'facet_block:outpost_suitabilities_2'
+settings:
+  id: 'facet_block:outpost_suitabilities_2'
+  label: 'Outpost suitabilities'
+  provider: facets
+  label_display: '0'
+  block_id: outpost_suitabilities_2
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      localgov_directory: localgov_directory
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

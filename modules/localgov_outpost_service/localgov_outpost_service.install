@@ -5,6 +5,9 @@
  * LocalGov Outpost Services installation and updates.
  */
 
+use Drupal\search_api\Entity\Index;
+use Drupal\search_api\Item\Field;
+
 /**
  * Implements hook_install().
  */

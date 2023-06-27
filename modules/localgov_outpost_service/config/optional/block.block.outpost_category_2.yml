@@ -2,24 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.localgov_directories_facets
+    - facets.facet.outpost_category_2
   module:
     - facets
     - node
   theme:
     - localgov_base
-id: localgov_directories_facets
+id: outpost_category_2
 theme: localgov_base
 region: sidebar_first
 weight: 5
 provider: null
-plugin: 'facet_block:localgov_directories_facets'
+plugin: 'facet_block:outpost_category_2'
 settings:
-  id: 'facet_block:localgov_directories_facets'
-  label: 'Directory facets'
+  id: 'facet_block:outpost_category_2'
+  label: 'Outpost category'
   provider: facets
   label_display: '0'
-  block_id: localgov_directories_facets
+  block_id: outpost_category_2
 visibility:
   node_type:
     id: node_type

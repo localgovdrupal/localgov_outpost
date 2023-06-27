@@ -2,24 +2,24 @@ langcode: en
 status: true
 dependencies:
   config:
-    - facets.facet.localgov_directories_facets
+    - facets.facet.outpost_suitabilities_2
   module:
     - facets
     - node
   theme:
     - localgov_scarfolk
-id: localgov_directories_facets_scarfolk
+id: outpost_suitabilities_2_scarfolk
 theme: localgov_scarfolk
 region: sidebar_first
 weight: 5
 provider: null
-plugin: 'facet_block:localgov_directories_facets'
+plugin: 'facet_block:outpost_suitabilities_2'
 settings:
-  id: 'facet_block:localgov_directories_facets'
-  label: 'Directory facets'
+  id: 'facet_block:outpost_suitabilities_2'
+  label: 'Outpost suitabilities'
   provider: facets
   label_display: '0'
-  block_id: localgov_directories_facets
+  block_id: outpost_suitabilities
 visibility:
   node_type:
     id: node_type
