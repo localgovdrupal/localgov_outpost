@@ -7,13 +7,13 @@ dependencies:
     - views.view.localgov_directory_channel
   module:
     - search_api
-id: outpost_suitabilites_2
+id: outpost_suitabilities_2
 name: Suitabilites
 weight: 0
 min_count: 1
 missing: false
 missing_label: others
-url_alias: outpost_suitabilites
+url_alias: outpost_suitabilities
 facet_source_id: 'search_api:views_embed__localgov_directory_channel__node_embed_for_proximity_search'
 field_identifier: localgov_outpost_suitabilities
 query_operator: or
