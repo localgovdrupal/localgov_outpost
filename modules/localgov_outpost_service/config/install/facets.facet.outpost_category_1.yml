@@ -1,4 +1,3 @@
-uuid: 400bd3ac-0faa-4326-bd6c-55ba3e0435b0
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - views.view.localgov_directory_channel
   module:
     - search_api
-_core:
-  default_config_hash: vDVsI0xoItoQdRKq4HOVJQMXnfMdm6PpX_-7m0yL5Xs
 id: outpost_category_1
 name: outpost_category_1
 weight: 0

@@ -1,4 +1,3 @@
-uuid: 2953fc6f-bb37-4363-8fbd-9034786ca19d
 langcode: en
 status: true
 dependencies:
@@ -7,8 +6,6 @@ dependencies:
     - node.type.localgov_outpost_service
   module:
     - address
-_core:
-  default_config_hash: 5Mn1Zziz96yrdPgNnxXfTOfkKUoChnjt3JwoRGxPLSo
 id: node.localgov_outpost_service.localgov_directory_address
 field_name: localgov_directory_address
 entity_type: node

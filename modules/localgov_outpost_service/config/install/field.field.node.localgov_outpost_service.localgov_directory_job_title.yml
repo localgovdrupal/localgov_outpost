@@ -1,4 +1,3 @@
-uuid: d8960e1b-7ebd-457f-a823-f99a06a8c6a5
 langcode: en
 status: true
 dependencies:
@@ -8,8 +7,6 @@ dependencies:
   enforced:
     module:
       - localgov_directories
-_core:
-  default_config_hash: lAuojtlWN_VLHS-ELKQW9t6ITiOxD-KTsnMNMhQRnu0
 id: node.localgov_outpost_service.localgov_directory_job_title
 field_name: localgov_directory_job_title
 entity_type: node
