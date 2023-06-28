@@ -20,6 +20,7 @@ function localgov_outpost_service_install($is_syncing) {
   if (empty($index)) {
     \Drupal::messenger()->addError(\t('No default LocalGov Directories index. Not configuring Outpost fields for Index.'));
   }
+  // Add Outpost taxonomy fields.
   $category_field = $index->get('localgov_outpost_taxonomy');
   if (empty($category_field)) {
     $category_field = new Field($index, 'localgov_outpost_taxonomy');
@@ -48,4 +49,5 @@ function localgov_outpost_service_install($is_syncing) {
     $index->addField($suitabilities_field);
     $index->save();
   }
+
 }

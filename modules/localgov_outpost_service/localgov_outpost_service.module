@@ -1,6 +1,44 @@
 <?php
 
+use Drupal\search_api\Entity\Index;
+use Drupal\search_api\Utility\PluginHelperInterface;
+
 /**
  * @file
  * Hooks for LocalGov Outpost Service content type.
  */
+
+function localgov_outpost_service_modules_installed($modules, $is_syncing) {
+  // Processors don't get added unless the index is enabled it seems.
+  // Doing this on enable would also work, but then always do so not just when
+  // it's first set up, and that's probably not desirable.
+  if (!$is_syncing && (
+    in_array('localgov_outpost_service', $modules) ||
+    in_array('localgov_directories_db', $modules) ||
+    in_array('localgov_directories_solr', $modules)
+  )) {
+    $index = Index::load('localgov_directories_index_default');
+    if (empty($index)) {
+      \Drupal::messenger()->addError(\t('No default LocalGov Directories index. Not configuring Outpost fields for Index.'));
+    }
+    // Index hierarchy of taxonomy fields.
+    if ($index->isValidProcessor('hierarchy') && ($hierarchy = $index->getProcessor('hierarchy'))) {
+      $hierarchy_config = $hierarchy->getConfiguration();
+      $hierarchy_config['fields']['localgov_outpost_taxonomy'] = 'taxonomy_term-parent';
+      $hierarchy_config['fields']['localgov_outpost_suitabilities'] = 'taxonomy_term-parent';
+      $hierarchy->setConfiguration($hierarchy_config);
+    }
+    else {
+      $plugin_helper = \Drupal::service('search_api.plugin_helper');
+      assert($plugin_helper instanceof PluginHelperInterface);
+      $hierarchy = $plugin_helper->createProcessorPlugin($index, 'hierarchy', [
+        'fields' => [
+          'localgov_outpost_taxonomy' => 'taxonomy_term-parent',
+          'localgov_outpost_suitabilities' => 'taxonomy_term-parent',
+        ],
+      ]);
+      $index->addProcessor($hierarchy);
+    }
+    $index->save();
+  }
+}
