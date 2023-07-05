@@ -1,0 +1,21 @@
+<?php
+
+/**
+ * @File
+ *   Hooks for LocalGov Outpost Connector module.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function localgov_outpost_connector_form_node_localgov_directory_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Hide the Outpost Service Endpoint field unless there's a Outpost Service
+  // content type on the directory channel.
+  $form['localgov_outpost_endpoint']['#states'] = [
+    'visible' => [
+      ':input[id="edit-localgov-directory-channel-types-localgov-outpost-service"]' => ['checked' => TRUE],
+    ],
+  ];
+}

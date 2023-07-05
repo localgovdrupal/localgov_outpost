@@ -1,0 +1,29 @@
+<?php
+
+/**
+ * @file
+ * Install and update hooks for LocalGov Outpost Connector.
+ */
+
+use Drupal\Core\Entity\Entity\EntityFormDisplay;
+
+/**
+ * Implements hook_install().
+ */
+function localgov_outpost_connector_install($is_syncing) {
+  if ($is_syncing) {
+    return;
+  }
+  $form_display = EntityFormDisplay::load('node.localgov_directory.default');
+  $form_display->setComponent('localgov_outpost_endpoint', [
+    'weight' => 50,
+    'settings' => [
+      'placeholder_url' => '',
+      'placeholder_title' => '',
+    ],
+    'third_party_settings' => [],
+    'type' => 'link_default',
+    'region' => 'content',
+  ]);
+  $form_display->save();
+}

@@ -1,12 +1,9 @@
-uuid: 679a00da-6b2c-4480-aad3-9319f9b6cab0
 langcode: en
 status: true
 dependencies:
   enforced:
     module:
       - localgov_outpost_connector
-_core:
-  default_config_hash: dz1OyoKSSDnlwHfgEdC-mmSanjOxdts0HGswlbTMpEM
 id: localgov_outpost_locations
 class: null
 field_plugin_method: null
@@ -20,8 +17,7 @@ source:
   plugin: url
   data_fetcher_plugin: file
   data_parser_plugin: outpost_json
-  urls:
-    - 'https://greenwich-outpost-api-staging.herokuapp.com/api/v1/services'
+  urls: [ ]
   item_selector: locations
   fields:
     -

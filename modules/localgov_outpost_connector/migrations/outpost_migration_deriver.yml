@@ -1,0 +1,6 @@
+id: outpost_migration_deriver
+deriver: Drupal\localgov_outpost_connector\Plugin\MigrationDeriver
+# @todo: Remove if/when https://www.drupal.org/node/2797421 is fixed.
+# Unused source configuration must be added to prevent errors.
+source:
+  plugin: embedded_data
