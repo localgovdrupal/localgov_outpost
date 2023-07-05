@@ -1,0 +1,12 @@
+{
+    "name": "localgovdrupal/localgov_outpost",
+    "description": "LocalGov Drupal Outpost integration.",
+    "type": "drupal-module",
+    "homepage": "https://github.com/localgovdrupal/localgov_outpost",
+    "license": "GPL-2.0-or-later",
+    "minimum-stability": "dev",
+    "require": {
+        "localgovdrupal/localgov_directories": "^2.5",
+	"drupal/migrate_plus": "^6.0"
+    }
+}
