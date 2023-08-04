@@ -15,7 +15,7 @@ use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 /**
- * Create derivative migrations for Outpost URLs. 
+ * Create derivative migrations for Outpost URLs.
  */
 class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface {
 
@@ -54,6 +54,7 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
     $query->condition('type', 'localgov_directory');
     $query->condition('localgov_outpost_endpoint', NULL, 'IS NOT NULL');
     $query->condition('status', NodeInterface::PUBLISHED);
+    $query->accessCheck(FALSE);
     $result = $query->execute();
 
     // Iterate over them.
