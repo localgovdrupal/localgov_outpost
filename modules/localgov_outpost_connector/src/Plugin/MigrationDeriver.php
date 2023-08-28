@@ -58,9 +58,10 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
     $result = $query->execute();
 
     // Iterate over them.
+    $outpost_migrations = $this->getMigrations();
     foreach (Node::loadMultiple($result) as $directory) {
       // Making all the required migrations.
-      foreach ($this->getMigrations() as $migration) {
+      foreach ($outpost_migrations as $migration) {
         // Creating a derivative ID.
         $id = $migration['id'] . '_' . $directory->id();
         // Source URI from the directory.
@@ -71,6 +72,28 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
         if (isset($migration['process']['localgov_directory_channels'])) {
           $migration['process']['localgov_directory_channels']['default_value'] = $directory->id();
         }
+        // Set derivative ids for migrate_lookup.
+        array_walk_recursive(
+          $migration,
+          function(&$item, $key, $args) {
+            if ($key == 'migration' && in_array($item, $args['migrations'])) {
+              $item = 'outpost_migration_deriver:' . $item . '_' . $args['id'];
+            }
+          },
+          [
+            'migrations' => array_keys($outpost_migrations),
+            'id' => $directory->id(),
+          ]
+        );
+        // Set derivative ids for dependencies.
+        if (!empty($migration['migration_dependencies']['required'])) {
+          foreach ($migration['migration_dependencies']['required'] as $delta => $migration_id) {
+            if (in_array($migration_id, array_keys($outpost_migrations))) {
+              $migration['migration_dependencies']['required'][$delta] = 'outpost_migration_deriver:' . $migration_id . '_' . $directory->id();
+            }
+          }
+        }
+
         $this->derivatives[$id] = $migration;
       }
     }
@@ -91,8 +114,8 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
     $dir = $this->extensionPathResolver->getPath('module', 'localgov_outpost_connector') . '/config/migration_base';
     $migrations= [];
     foreach ($this->fileSystem->scanDirectory($dir, '/\.yml/') as $path => $file) {
-      $migrations[] = Yaml::decode(file_get_contents($path));
-
+      $migration = Yaml::decode(file_get_contents($path));
+      $migrations[$migration['id']] = $migration;
     }
     return $migrations;
   }
