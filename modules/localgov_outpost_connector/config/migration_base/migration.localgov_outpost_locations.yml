@@ -68,6 +68,6 @@ process:
   postal_address/postal_code: postal_code
   postal_address/address_line1: address_line1
 destination:
-  plugin: 'entity:localgov_geo'
+  plugin: 'entity:geo_entity'
   default_bundle: address
 migration_dependencies: {  }
