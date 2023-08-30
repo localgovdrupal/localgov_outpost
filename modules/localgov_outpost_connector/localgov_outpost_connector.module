@@ -6,6 +6,10 @@
  */
 
 use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Language\LanguageInterface;
+use Drupal\migrate\Plugin\MigrateSourceInterface;
+use Drupal\migrate\Plugin\MigrationInterface;
+use Drupal\migrate\Row;
 
 /**
  * Implements hook_form_FORM_ID_alter().
@@ -18,4 +22,23 @@ function localgov_outpost_connector_form_node_localgov_directory_form_alter(&$fo
       ':input[id="edit-localgov-directory-channel-types-localgov-outpost-service"]' => ['checked' => TRUE],
     ],
   ];
+}
+
+/**
+ * Implements hook_migrate_prepare_row().
+ */
+function localgov_outpost_connector_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
+  if (strpos($migration->getDerivativeId(), 'localgov_outpost_services') !== 0) {
+    // Operate on services importers.
+    return;
+  }
+
+  $meta = $row->get('meta');
+  foreach ((array) $meta as $item) {
+    $machine_key = \Drupal::transliteration()->transliterate($item['key'], LanguageInterface::LANGCODE_DEFAULT, '_');
+    $machine_key = mb_strtolower($machine_key);
+    $machine_key = preg_replace('@[^a-z0-9_.]+@', '_', $machine_key);
+    $machine_key = 'meta__' . $machine_key;
+    $row->setSourceProperty($machine_key, $item['value']);
+  }
 }
