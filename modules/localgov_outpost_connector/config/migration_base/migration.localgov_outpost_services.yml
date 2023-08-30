@@ -133,7 +133,7 @@ process:
         source: id
   localgov_outpost_suitabilities:
     plugin: sub_process
-    source: taxonomies
+    source: suitabilities
     process:
       target_id:
         plugin: migration_lookup
