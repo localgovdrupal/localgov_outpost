@@ -16,7 +16,7 @@ label: 'Outpost Services'
 source:
   plugin: url
   data_fetcher_plugin: file
-  data_parser_plugin: json
+  data_parser_plugin: outpost_json
   urls: [ ]
   item_selector: content
   fields:
