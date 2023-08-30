@@ -80,6 +80,12 @@ source:
       name: taxonomies
       label: Taxonomies
       selector: taxonomies
+    -
+      # Meta fields are also available dynamically by the key name generated in
+      # localgov_outpost_connector_migrate_prepare_row().
+      name: meta
+      label: 'Meta: Key Value fields'
+      selector: meta
   ids:
     id:
       type: integer

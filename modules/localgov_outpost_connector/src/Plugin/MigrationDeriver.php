@@ -4,12 +4,15 @@ declare(strict_types = 1);
 
 namespace Drupal\localgov_outpost_connector\Plugin;
 
+use Drupal\Component\EventDispatcher\ContainerAwareEventDispatcher;
 use Drupal\Component\Plugin\Derivative\DeriverBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Extension\ExtensionPathResolver;
 use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Plugin\Discovery\ContainerDeriverInterface;
 use Drupal\Core\Serialization\Yaml;
+use Drupal\localgov_outpost_connector\Event\MigrationDeriverEvent;
+use Drupal\localgov_outpost_connector\Event\OutpostConnectorEvents;
 use Drupal\node\Entity\Node;
 use Drupal\node\NodeInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -27,7 +30,7 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
    * @param \Druapl\core\File\FileSystemInterface $fileSystem
    *   The file system service.
    */
-  public function __construct(protected EntityTypeManagerInterface $entityTypeManager, protected FileSystemInterface $fileSystem, protected ExtensionPathResolver $extensionPathResolver) {
+  public function __construct(protected EntityTypeManagerInterface $entityTypeManager, protected FileSystemInterface $fileSystem, protected ExtensionPathResolver $extensionPathResolver, protected ContainerAwareEventDispatcher $eventDispatcher) {
   }
 
   /**
@@ -37,7 +40,8 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
     return new static(
       $container->get('entity_type.manager'),
       $container->get('file_system'),
-      $container->get('extension.path.resolver')
+      $container->get('extension.path.resolver'),
+      $container->get('event_dispatcher')
     );
   }
 
@@ -93,6 +97,11 @@ class MigrationDeriver extends DeriverBase implements ContainerDeriverInterface 
             }
           }
         }
+
+        // Allow for site, or directory, specific alterations to the migration.
+        $event = new MigrationDeriverEvent($migration, $migration['id'], $directory->id());
+        $this->eventDispatcher->dispatch($event, OutpostConnectorEvents::MIGRATION_DERIVER);
+        $migration = $event->getMigration();
 
         $this->derivatives[$id] = $migration;
       }
