@@ -7,3 +7,5 @@ dependencies:
   - localgov_outpost:localgov_outpost
   - localgov_directories:localgov_directories
   - localgov_directories:localgov_directories_location
+  - office_hours:office_hours
+  - paragraphs:paragraphs
