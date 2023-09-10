@@ -1,0 +1,46 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.localgov_outpost_contact.localgov_contact_email
+    - field.field.paragraph.localgov_outpost_contact.localgov_contact_name
+    - field.field.paragraph.localgov_outpost_contact.localgov_contact_phone
+    - field.field.paragraph.localgov_outpost_contact.localgov_contact_title
+    - paragraphs.paragraphs_type.localgov_outpost_contact
+id: paragraph.localgov_outpost_contact.default
+targetEntityType: paragraph
+bundle: localgov_outpost_contact
+mode: default
+content:
+  localgov_contact_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  localgov_contact_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  localgov_contact_phone:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  localgov_contact_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  search_api_excerpt: true

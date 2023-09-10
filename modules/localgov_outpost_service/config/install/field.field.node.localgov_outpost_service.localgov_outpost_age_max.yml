@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_age_max
+    - node.type.localgov_outpost_service
+id: node.localgov_outpost_service.localgov_outpost_age_max
+field_name: localgov_outpost_age_max
+entity_type: node
+bundle: localgov_outpost_service
+label: 'Maximum age'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

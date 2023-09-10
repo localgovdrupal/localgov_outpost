@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_org_name
+    - node.type.localgov_outpost_service
+id: node.localgov_outpost_service.localgov_outpost_org_name
+field_name: localgov_outpost_org_name
+entity_type: node
+bundle: localgov_outpost_service
+label: Organisation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
