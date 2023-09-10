@@ -8,20 +8,26 @@ dependencies:
     - field.field.node.localgov_outpost_service.localgov_directory_email
     - field.field.node.localgov_outpost_service.localgov_directory_facets_select
     - field.field.node.localgov_outpost_service.localgov_directory_files
-    - field.field.node.localgov_outpost_service.localgov_directory_job_title
-    - field.field.node.localgov_outpost_service.localgov_directory_name
-    - field.field.node.localgov_outpost_service.localgov_directory_phone
     - field.field.node.localgov_outpost_service.localgov_directory_title_sort
     - field.field.node.localgov_outpost_service.localgov_directory_website
     - field.field.node.localgov_outpost_service.localgov_location
+    - field.field.node.localgov_outpost_service.localgov_outpost_age_max
+    - field.field.node.localgov_outpost_service.localgov_outpost_age_min
+    - field.field.node.localgov_outpost_service.localgov_outpost_contact
+    - field.field.node.localgov_outpost_service.localgov_outpost_cost
+    - field.field.node.localgov_outpost_service.localgov_outpost_cost_free
+    - field.field.node.localgov_outpost_service.localgov_outpost_links
+    - field.field.node.localgov_outpost_service.localgov_outpost_org_name
+    - field.field.node.localgov_outpost_service.localgov_outpost_regular_sched
     - field.field.node.localgov_outpost_service.localgov_outpost_suitabilities
     - field.field.node.localgov_outpost_service.localgov_outpost_taxonomy
     - node.type.localgov_outpost_service
   module:
     - address
+    - entity_reference_revisions
     - field_group
     - link
-    - telephone
+    - office_hours
     - text
     - user
   enforced:
@@ -31,9 +37,6 @@ third_party_settings:
   field_group:
     group_enquiries:
       children:
-        - localgov_directory_name
-        - localgov_directory_job_title
-        - localgov_directory_phone
         - localgov_directory_email
         - localgov_directory_address
         - localgov_directory_website
@@ -81,30 +84,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  localgov_directory_job_title:
-    type: string
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
-  localgov_directory_name:
-    type: string
-    label: inline
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  localgov_directory_phone:
-    type: telephone_link
-    label: inline
-    settings:
-      title: ''
-    third_party_settings: {  }
-    weight: 5
-    region: content
   localgov_directory_website:
     type: link
     label: above
@@ -125,6 +104,104 @@ content:
       link: false
     third_party_settings: {  }
     weight: 9
+    region: content
+  localgov_outpost_age_max:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  localgov_outpost_age_min:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  localgov_outpost_contact:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  localgov_outpost_cost:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  localgov_outpost_cost_free:
+    type: boolean
+    label: hidden
+    settings:
+      format: custom
+      format_custom_false: ''
+      format_custom_true: Free
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  localgov_outpost_links:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  localgov_outpost_org_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 12
+    region: content
+  localgov_outpost_regular_sched:
+    type: office_hours
+    label: above
+    settings:
+      day_format: long
+      time_format: G
+      compress: false
+      grouped: false
+      show_closed: all
+      closed_format: Closed
+      all_day_format: 'All day open'
+      separator:
+        days: '<br />'
+        grouped_days: ' - '
+        day_hours: ': '
+        hours_hours: '-'
+        more_hours: ', '
+      current_status:
+        position: ''
+        open_text: 'Currently open!'
+        closed_text: 'Currently closed'
+      exceptions:
+        title: 'Exception hours'
+        restrict_exceptions_to_num_days: 7
+        date_format: long
+        all_day_format: 'All day open'
+      timezone_field: ''
+      office_hours_first_day: ''
+      schema:
+        enabled: false
+    third_party_settings: {  }
+    weight: 14
     region: content
   localgov_outpost_suitabilities:
     type: entity_reference_label

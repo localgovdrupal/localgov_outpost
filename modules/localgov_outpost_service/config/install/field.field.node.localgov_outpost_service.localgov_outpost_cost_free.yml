@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_cost_free
+    - node.type.localgov_outpost_service
+id: node.localgov_outpost_service.localgov_outpost_cost_free
+field_name: localgov_outpost_cost_free
+entity_type: node
+bundle: localgov_outpost_service
+label: Free
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: Free
+  off_label: Cost
+field_type: boolean

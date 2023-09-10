@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_regular_sched
+    - node.type.localgov_outpost_service
+  module:
+    - office_hours
+id: node.localgov_outpost_service.localgov_outpost_regular_sched
+field_name: localgov_outpost_regular_sched
+entity_type: node
+bundle: localgov_outpost_service
+label: 'Date and Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: office_hours

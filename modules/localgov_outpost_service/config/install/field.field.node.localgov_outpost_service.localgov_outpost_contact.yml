@@ -1,0 +1,54 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_contact
+    - node.type.localgov_outpost_service
+    - paragraphs.paragraphs_type.localgov_outpost_contact
+  module:
+    - entity_reference_revisions
+id: node.localgov_outpost_service.localgov_outpost_contact
+field_name: localgov_outpost_contact
+entity_type: node
+bundle: localgov_outpost_service
+label: Contact
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      localgov_outpost_contact: localgov_outpost_contact
+    negate: 0
+    target_bundles_drag_drop:
+      card:
+        weight: 10
+        enabled: false
+      card_group:
+        weight: 11
+        enabled: false
+      category_list:
+        weight: 12
+        enabled: false
+      category_list_item:
+        weight: 13
+        enabled: false
+      hero:
+        weight: 14
+        enabled: false
+      localgov_outpost_contact:
+        weight: 15
+        enabled: true
+      search_form:
+        weight: 15
+        enabled: false
+      text:
+        weight: 16
+        enabled: false
+      video:
+        weight: 17
+        enabled: false
+field_type: entity_reference_revisions

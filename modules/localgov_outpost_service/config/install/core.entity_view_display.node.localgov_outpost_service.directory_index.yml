@@ -9,12 +9,17 @@ dependencies:
     - field.field.node.localgov_outpost_service.localgov_directory_email
     - field.field.node.localgov_outpost_service.localgov_directory_facets_select
     - field.field.node.localgov_outpost_service.localgov_directory_files
-    - field.field.node.localgov_outpost_service.localgov_directory_job_title
-    - field.field.node.localgov_outpost_service.localgov_directory_name
-    - field.field.node.localgov_outpost_service.localgov_directory_phone
     - field.field.node.localgov_outpost_service.localgov_directory_title_sort
     - field.field.node.localgov_outpost_service.localgov_directory_website
     - field.field.node.localgov_outpost_service.localgov_location
+    - field.field.node.localgov_outpost_service.localgov_outpost_age_max
+    - field.field.node.localgov_outpost_service.localgov_outpost_age_min
+    - field.field.node.localgov_outpost_service.localgov_outpost_contact
+    - field.field.node.localgov_outpost_service.localgov_outpost_cost
+    - field.field.node.localgov_outpost_service.localgov_outpost_cost_free
+    - field.field.node.localgov_outpost_service.localgov_outpost_links
+    - field.field.node.localgov_outpost_service.localgov_outpost_org_name
+    - field.field.node.localgov_outpost_service.localgov_outpost_regular_sched
     - field.field.node.localgov_outpost_service.localgov_outpost_suitabilities
     - field.field.node.localgov_outpost_service.localgov_outpost_taxonomy
     - node.type.localgov_outpost_service
@@ -76,30 +81,6 @@ content:
     third_party_settings: {  }
     weight: 1
     region: content
-  localgov_directory_job_title:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 3
-    region: content
-  localgov_directory_name:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 2
-    region: content
-  localgov_directory_phone:
-    type: string
-    label: hidden
-    settings:
-      link_to_entity: false
-    third_party_settings: {  }
-    weight: 4
-    region: content
   localgov_directory_website:
     type: link_separate
     label: hidden
@@ -117,6 +98,14 @@ hidden:
   localgov_directory_search: true
   localgov_directory_title_sort: true
   localgov_location: true
+  localgov_outpost_age_max: true
+  localgov_outpost_age_min: true
+  localgov_outpost_contact: true
+  localgov_outpost_cost: true
+  localgov_outpost_cost_free: true
+  localgov_outpost_links: true
+  localgov_outpost_org_name: true
+  localgov_outpost_regular_sched: true
   localgov_outpost_suitabilities: true
   localgov_outpost_taxonomy: true
   search_api_excerpt: true

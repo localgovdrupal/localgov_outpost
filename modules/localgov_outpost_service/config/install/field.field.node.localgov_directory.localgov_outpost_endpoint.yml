@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_endpoint
+    - node.type.localgov_directory
+  module:
+    - link
+id: node.localgov_directory.localgov_outpost_endpoint
+field_name: localgov_outpost_endpoint
+entity_type: node
+bundle: localgov_directory
+label: 'Outpost endpoint'
+description: 'An Outpost API OpenReferral endpoint to import content into this directory.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 17
+field_type: link

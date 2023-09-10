@@ -1,0 +1,9 @@
+langcode: en
+status: true
+dependencies: {  }
+id: localgov_outpost_contact
+label: Contact
+icon_uuid: null
+icon_default: null
+description: 'Contact for an Outpost Directory entry.'
+behavior_plugins: {  }
