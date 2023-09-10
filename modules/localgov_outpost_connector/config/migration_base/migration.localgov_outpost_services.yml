@@ -19,6 +19,10 @@ source:
   data_parser_plugin: outpost_json
   urls: [ ]
   item_selector: content
+  constants:
+    CURRENCY: '£'
+    COLON: ':'
+    EMPTY: ''
   fields:
     -
       name: id
@@ -77,9 +81,53 @@ source:
       label: Organisation
       selector: organisation
     -
+      name: organisation_id
+      label: 'Organisation: ID'
+      selector: organisation/0/id
+    -
+      name: organisation_name
+      label: 'Organisation: Name'
+      selector: organisation/0/name
+    -
+      name: organisation_description
+      label: 'Organisation: Description'
+      selector: organisation/0/description
+    -
+      name: organisation_email
+      label: 'Organisation: Email'
+      selector: organisation/0/email
+    -
+      name: organisation_url
+      label: 'Organisation: URL'
+      selector: organisation/0/url
+    -
       name: taxonomies
       label: Taxonomies
       selector: taxonomies
+    -
+      name: links
+      label: Links
+      selector: links
+    -
+      name: free
+      label: Free
+      selector: free
+    -
+      name: cost_options
+      label: Cost
+      selector: cost_options
+    -
+      name: min_age
+      label: 'Minimum age'
+      selector: min_age
+    -
+      name: max_age
+      label: 'Maximum age'
+      selector: max_age
+    -
+      name: regular_schedules
+      label: 'Regular schedules'
+      selector: regular_schedules
     -
       # Meta fields are also available dynamically by the key name generated in
       # localgov_outpost_connector_migrate_prepare_row().
@@ -118,11 +166,78 @@ process:
     source: updated
   title: name
   body: description
-  localgov_directory_job_title: contact_title
-  localgov_directory_name: contact_name
-  localgov_directory_phone: contact_phone
-  localgov_directory_email: contact_email
   localgov_directory_website: url
+  localgov_outpost_links:
+    plugin: sub_process
+    source: links
+    process:
+      uri: url
+      title: label
+  localgov_outpost_cost_free: free
+  localgov_outpost_cost:
+    plugin: sub_process
+    source: cost_options
+    include_source: true
+    source_key: source
+    process:
+      value:
+        plugin: concat
+        source:
+          - option
+          - source/constants/CURRENCY
+          - amount
+          - cost_type
+        delimiter: ' '
+  localgov_outpost_regular_sched:
+    plugin: sub_process
+    source: regular_schedules
+    include_source: true
+    source_key: source
+    process:
+      day:
+        plugin: static_map
+        map:
+          Sunday: 0
+          Monday: 1
+          Tuesday: 2
+          Wednesday: 3
+          Thursday: 4
+          Friday: 5
+          Saturday: 6
+        source: weekday
+      starthours:
+        plugin: callback
+        callable: str_replace
+        unpack_source: true
+        source:
+          - source/constants/COLON
+          - source/constants/EMPTY
+          - opens_at
+      endhours:
+        plugin: callback
+        callable: str_replace
+        unpack_source: true
+        source:
+          - source/constants/COLON
+          - source/constants/EMPTY
+          - closes_at
+  localgov_outpost_org_name: organisation_name
+  localgov_outpost_age_min: min_age
+  localgov_outpost_age_max: max_age
+  contact_lookup:
+    plugin: sub_process
+    source: contacts
+    process:
+      contact_lookup:
+        plugin: migration_lookup
+        migration: localgov_outpost_contacts
+        source: id
+  localgov_outpost_contact:
+    plugin: sub_process
+    source: '@contact_lookup'
+    process:
+      target_id: contact_lookup/0
+      target_revision_id: contact_lookup/1
   localgov_outpost_taxonomy:
     plugin: sub_process
     source: taxonomies
@@ -154,3 +269,4 @@ migration_dependencies:
     - localgov_outpost_category
     - localgov_outpost_locations
     - localgov_outpost_suitabilities
+    - localgov_outpost_contacts

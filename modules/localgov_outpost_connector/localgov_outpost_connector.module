@@ -28,17 +28,25 @@ function localgov_outpost_connector_form_node_localgov_directory_form_alter(&$fo
  * Implements hook_migrate_prepare_row().
  */
 function localgov_outpost_connector_migrate_prepare_row(Row $row, MigrateSourceInterface $source, MigrationInterface $migration) {
-  if (strpos($migration->getDerivativeId(), 'localgov_outpost_services') !== 0) {
-    // Operate on services importers.
-    return;
+  if (strpos($migration->getDerivativeId(), 'localgov_outpost_services') === 0) {
+    $meta = $row->get('meta');
+    foreach ((array) $meta as $item) {
+      $machine_key = \Drupal::transliteration()->transliterate($item['key'], LanguageInterface::LANGCODE_DEFAULT, '_');
+      $machine_key = mb_strtolower($machine_key);
+      $machine_key = preg_replace('@[^a-z0-9_.]+@', '_', $machine_key);
+      $machine_key = 'meta__' . $machine_key;
+      $row->setSourceProperty($machine_key, $item['value']);
+    }
   }
-
-  $meta = $row->get('meta');
-  foreach ((array) $meta as $item) {
-    $machine_key = \Drupal::transliteration()->transliterate($item['key'], LanguageInterface::LANGCODE_DEFAULT, '_');
-    $machine_key = mb_strtolower($machine_key);
-    $machine_key = preg_replace('@[^a-z0-9_.]+@', '_', $machine_key);
-    $machine_key = 'meta__' . $machine_key;
-    $row->setSourceProperty($machine_key, $item['value']);
+  if (strpos($migration->getDerivativeId(), 'localgov_outpost_locations') === 0) {
+    $accessibility_html = '';
+    $accessibilities= $row->get('accessibilities');
+    foreach ((array) $accessibilities as $item) {
+      $accessibility_html .= '<li>' . $item['name'] . '</li>';
+    }
+    if ($accessibility_html != '') {
+      $accessibility_html = '<ul>' . $accessibility_html . '</ul>';
+    }
+    $row->setSourceProperty('accessibility_html', $accessibility_html);
   }
 }

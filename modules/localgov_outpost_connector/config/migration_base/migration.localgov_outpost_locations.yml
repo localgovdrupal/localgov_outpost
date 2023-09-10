@@ -52,21 +52,30 @@ source:
       name: geometry
       label: Geometry
       selector: geometry
+    -
+      name: accessibilities
+      label: Accessibilities
+      selector: accessibilities
+    -
+      name: accessibility_html
+      label: 'Accessibilities in an HTML item list'
   ids:
     id:
       type: integer
 process:
   location:
-    -
-      plugin: outpost_geometry
-      source: geometry
+    plugin: outpost_geometry
+    source: geometry
   postal_address/country_code:
-    -
-      plugin: default_value
-      default_value: GB
+    plugin: default_value
+    default_value: GB
   postal_address/locality: country
   postal_address/postal_code: postal_code
   postal_address/address_line1: address_line1
+  accessibility/value: accessibility_html
+  accessibility/format:
+    plugin: default_value
+    default_value: 'basic_html'
 destination:
   plugin: 'entity:geo_entity'
   default_bundle: address
