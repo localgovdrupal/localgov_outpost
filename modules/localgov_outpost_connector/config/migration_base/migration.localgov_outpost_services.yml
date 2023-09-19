@@ -262,6 +262,7 @@ process:
         plugin: migration_lookup
         migration: localgov_outpost_locations
         source: id
+  localgov_outpost_status: status
 destination:
   plugin: 'entity:node'
 migration_dependencies:

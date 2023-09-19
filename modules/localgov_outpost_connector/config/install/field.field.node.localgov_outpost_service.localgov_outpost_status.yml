@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.localgov_outpost_status
+    - node.type.localgov_outpost_service
+  module:
+    - options
+id: node.localgov_outpost_service.localgov_outpost_status
+field_name: localgov_outpost_status
+entity_type: node
+bundle: localgov_outpost_service
+label: Status
+description: 'Outpost service status.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string
