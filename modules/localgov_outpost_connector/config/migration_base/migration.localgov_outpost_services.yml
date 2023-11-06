@@ -187,7 +187,7 @@ process:
           - source/constants/CURRENCY
           - amount
           - cost_type
-        delimiter: ' '
+        delimiter: ''
   localgov_outpost_regular_sched:
     plugin: sub_process
     source: regular_schedules
