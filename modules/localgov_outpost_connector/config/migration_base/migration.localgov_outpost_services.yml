@@ -83,23 +83,23 @@ source:
     -
       name: organisation_id
       label: 'Organisation: ID'
-      selector: organisation/0/id
+      selector: organisation/id
     -
       name: organisation_name
       label: 'Organisation: Name'
-      selector: organisation/0/name
+      selector: organisation/name
     -
       name: organisation_description
       label: 'Organisation: Description'
-      selector: organisation/0/description
+      selector: organisation/description
     -
       name: organisation_email
       label: 'Organisation: Email'
-      selector: organisation/0/email
+      selector: organisation/email
     -
       name: organisation_url
       label: 'Organisation: URL'
-      selector: organisation/0/url
+      selector: organisation/url
     -
       name: taxonomies
       label: Taxonomies
@@ -187,7 +187,7 @@ process:
           - source/constants/CURRENCY
           - amount
           - cost_type
-        delimiter: ' '
+        delimiter: ''
   localgov_outpost_regular_sched:
     plugin: sub_process
     source: regular_schedules
