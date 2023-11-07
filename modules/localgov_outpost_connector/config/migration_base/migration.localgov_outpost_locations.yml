@@ -72,6 +72,7 @@ process:
   postal_address/locality: country
   postal_address/postal_code: postal_code
   postal_address/address_line1: address_line1
+  postal_address/organization: name
   accessibility/value: accessibility_html
   accessibility/format:
     plugin: default_value
