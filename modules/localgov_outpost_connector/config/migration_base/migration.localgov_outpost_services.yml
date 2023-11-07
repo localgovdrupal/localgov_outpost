@@ -113,6 +113,10 @@ source:
       label: Free
       selector: free
     -
+      name: suitabilities
+      label: Suitabilities
+      selector: suitabilities
+    -
       name: cost_options
       label: Cost
       selector: cost_options
