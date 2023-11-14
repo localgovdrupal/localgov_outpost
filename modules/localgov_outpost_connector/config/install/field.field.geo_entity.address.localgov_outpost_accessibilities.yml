@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.geo_entity.localgov_outpost_accessibilities
+    - geo_entity.geo_entity_type.address
+id: geo_entity.address.localgov_outpost_accessibilities
+field_name: localgov_outpost_accessibilities
+entity_type: geo_entity
+bundle: address
+label: 'Outpost Accessibility List'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string
