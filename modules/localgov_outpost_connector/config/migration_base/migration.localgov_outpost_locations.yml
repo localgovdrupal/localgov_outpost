@@ -73,6 +73,13 @@ process:
   postal_address/postal_code: postal_code
   postal_address/address_line1: address_line1
   postal_address/organization: name
+  localgov_outpost_accessibilities:
+    plugin: sub_process
+    source: accessibilities
+    process:
+      value:
+        plugin: get
+        source: name
   accessibility/value: accessibility_html
   accessibility/format:
     plugin: default_value
