@@ -23,6 +23,7 @@ source:
     CURRENCY: '£'
     COLON: ':'
     EMPTY: ''
+    SPACE: ' '
   fields:
     -
       name: id
@@ -188,10 +189,11 @@ process:
         plugin: concat
         source:
           - option
+          - source/constants/SPACE
           - source/constants/CURRENCY
           - amount
+          - source/constants/SPACE
           - cost_type
-        delimiter: ''
   localgov_outpost_regular_sched:
     plugin: sub_process
     source: regular_schedules
