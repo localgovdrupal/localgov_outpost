@@ -194,6 +194,7 @@ process:
           - amount
           - source/constants/SPACE
           - cost_type
+  localgov_outpost_status: status
   localgov_outpost_regular_sched:
     plugin: sub_process
     source: regular_schedules
