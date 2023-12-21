@@ -165,7 +165,10 @@ process:
     to_timezone: Europe/London
     source: updated
   title: name
-  body: description
+  body/value: description
+  body/format:
+    plugin: default_value
+    default_value: basic_html
   localgov_directory_website: url
   localgov_outpost_links:
     plugin: sub_process
