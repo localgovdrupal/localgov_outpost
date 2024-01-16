@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace Drupal\localgov_outpost_connector\Plugin\migrate_plus\data_parser;
 
+use Drupal\migrate\MigrateException;
 use Drupal\migrate_plus\Plugin\migrate_plus\data_parser\Json;
 
 /**
@@ -48,8 +49,12 @@ class OutpostJson extends Json {
         $source_data = json_decode($utf8response, TRUE, 512, JSON_THROW_ON_ERROR);
       }
 
-      if (!is_array($source_data['content'])) {
-        return $items;
+      if (
+        !is_array($source_data['content']) ||
+        !isset($source_data['number']) ||
+        !isset($source_data['last'])
+      ) {
+        throw MigrateException('Source data missing from ' . $url . $page);
       }
       $pagination = [
         'number' => $source_data['number'],
