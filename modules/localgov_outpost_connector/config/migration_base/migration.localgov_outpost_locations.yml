@@ -69,7 +69,7 @@ process:
   postal_address/country_code:
     plugin: default_value
     default_value: GB
-  postal_address/locality: country
+  postal_address/locality: city
   postal_address/postal_code: postal_code
   postal_address/address_line1: address_line1
   postal_address/organization: name
