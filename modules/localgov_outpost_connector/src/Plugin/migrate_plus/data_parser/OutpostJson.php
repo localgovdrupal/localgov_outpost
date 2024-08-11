@@ -25,7 +25,7 @@ class OutpostJson extends Json {
    *
    * @throws \GuzzleHttp\Exception\RequestException
    */
-  protected function getSourceData(string $url): array {
+  protected function getSourceData(string $url, string|int $item_selector = '') {
     $page = '';
     $pagination = [
       'number' => 0,
